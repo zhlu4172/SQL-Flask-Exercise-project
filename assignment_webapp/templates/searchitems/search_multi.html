@@ -1,0 +1,11 @@
+{% include 'top.html' %}
+    <div class="content">
+        <h1 class="title">Multi Search</h1>
+
+        <form class="Search" method="POST" action="{{url_for('search_multi')}}">
+            <input type="text" name="searchterm" placeholder="Multi" autofocus required>
+            <button class="flat" type="submit">Search</button>
+        </form>
+
+    </div>
+{% include 'bottom.html'%}

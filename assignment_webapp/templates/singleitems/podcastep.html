@@ -1,0 +1,53 @@
+{% include 'top.html' %}
+<div class="content">
+    <div class="container details">
+        <!-- TODO Query (7)
+        Display All Relevant Podcast Episode Infromation including meta data
+        -->
+        {% if podcastep | length > 0 %}
+            <h2 class="title">Podcast Episode Media ID: {{podcastep[0].podcast_id}} </h2>
+            <hr/>
+            <h2 class="title">Podcast Episode Title: {{podcastep[0].podcast_episode_title}} </h2>
+            <hr/>
+            <h2 class="title">Podcast Episode URI: {{podcastep[0].podcast_episode_uri}} </h2>
+            <hr/>
+            <h2 class="title">Podcast Episode Date Published: {{podcastep[0].podcast_episode_published_date}} </h2>
+            <hr/>
+            <h2 class="title">Podcast Episode Length: {{podcastep[0].podcast_episode_length}} </h2>
+            <hr/>
+            <h3> Artworks </h3>
+            {% for instance in podcastep %}
+                {% if instance.md_type_name == 'artwork' %}
+                    <img src="{{instance.md_value}}" alt="image">
+                    <br/>© Spotify Public Domain 2019.
+                {% endif %}
+            {% endfor %}
+            <br/>
+            <h3> Descriptions </h3>
+            {% for instance in podcastep %}
+                {% if instance.md_type_name == 'description' %}
+                    <div>
+                        {{instance.md_value}}
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <br/>
+            <!-- TODO - Query (10)
+            You will have to modify this slightly to make each genre clickable
+            -->
+            <h3> Genres </h3>
+            {% for instance in podcastep_genres %}
+                    {{instance.podcastegenres}}
+            {% endfor %}
+            {% else %}
+                <h2 class="title"> Invalid Podcaste ID</h2>
+            {% endif %}
+            
+
+
+        <!-- TODO - Query (10)
+        You will have to modify the above approach slightly to make each genre clickable
+        -->
+    </div>
+</div>
+{% include 'bottom.html'%}

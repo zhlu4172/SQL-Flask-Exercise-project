@@ -1,0 +1,57 @@
+{% include 'top.html' %}
+<div class="content">
+    <div class="container details">   
+        <table class="styled">
+                    <thead>
+                        <tr>
+                            <td>ITEM ID </td>
+                            <td>ITEM TITLE</td>
+                            <td>ITEM TYPE</td>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        {% if  page.type== 'songgenre' %}
+                            {% for instance in songgenre %}
+                            <tr class="clickable-tr">
+                                <td style="text-align: center">{{ instance.song_id }}</td>
+                                <td>{{instance.song_title}}</td>
+                                <td>{{instance.md_type_name}}</td>
+                            </tr>
+                            {% endfor %}
+                        {% endif %}
+                        {% if  page.type== 'film_tvshow_genre' %}
+                            {% for instance in film_tvshow_genre %}
+                            
+                            <tr class="clickable-tr">
+                                <td style="text-align: center">{{ instance.item_id}}</td>
+                                <td>{{instance.item_title}}</td>
+                                <td>{{instance.item_type}}</td>
+                            </tr> 
+                            {% endfor %}
+                        {% endif %} 
+                        <!-- {% if  page.type== 'g' %}
+                            {% for instance in film_tvshow_genre %}
+                            
+                            <tr class="clickable-tr">
+                                <td style="text-align: center">{{ instance.item_id}}</td>
+                                <td>{{instance.item_title}}</td>
+                                <td>{{instance.item_type}}</td>
+                            </tr> 
+                            {% endfor %}
+                        {% endif %}  -->
+                        
+                    </tbody>
+        
+                </table>
+        
+        <!-- TODO Query (10) -->
+        <!-- First check should be a valid instance -->
+        <!-- Second check should be what type of genre? -->
+        <!-- {% if genre | length > 0 %}
+        
+        {% else %}
+            <h2 class="title"> Invalid Genre ID</h2>
+        {% endif %}-->
+    </div>
+</div> 
+{% include 'bottom.html'%}
